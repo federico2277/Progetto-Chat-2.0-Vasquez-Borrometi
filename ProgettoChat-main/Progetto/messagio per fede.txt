@@ -1,0 +1,29 @@
+abbiamo sbaglaito tutto bisogna farlo in un altra maniera
+
+
+comadi pre
+                System.out.println(" Vuoi comunicare in publico o in privato se vuoi uscire inserire -uscire");
+                while(controllo){
+                String command = keyboard.readLine();
+                out.println(command);
+                }
+
+
+sdflsajfd
+
+
+                    private void InvioMSG(MessagioMaranzone maranzone) {
+        //invio msg se la sessione è pubblica
+        if(maranzone.getSessione().equalsIgnoreCase("pubblico")){
+            for (ClientHandler client : clients) {
+                client.out.println(maranzone.getMsg());    
+            } 
+        }//invio msg se la sessione è privata
+        else if(maranzone.getSessione().equalsIgnoreCase("privato")){
+            for(int i=0;i<clients.size();i++){
+                if(clients.get(i).getHostname().equalsIgnoreCase(maranzone.getDestinatario())){
+                    clients.get(i).out.println("Hai un mesaggio da "+maranzone.getMitente()+" \n " +maranzone.getMsg());
+                }
+            }
+        }
+    }
