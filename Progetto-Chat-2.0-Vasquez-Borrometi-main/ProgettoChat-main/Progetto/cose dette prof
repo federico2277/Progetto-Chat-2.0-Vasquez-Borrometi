@@ -1,0 +1,72 @@
+bisogna serializare i dati del utente 
+poi serializare il messagio
+
+codice vecchio 
+
+                
+while (ciclop) {
+
+    out.println(" Vuoi comunicare in pubblico o privato ?");
+    sessione = in.readLine();
+    System.out.println(sessione);
+    //sessione privata
+        if (sessione.equalsIgnoreCase("privato")){
+            ciclo = true;
+            out.println("scrivi il nome della persona con cui vuoi chattare se vuoi chiudere la chat digita (esci da chat)");
+            String destinatario=in.readLine(); 
+            out.println("scrivi il messagio");
+            while(ciclo){
+                String messaggio=in.readLine(); 
+                if(messaggio.equals("esci da chat")){
+                    sessione = "vuota";
+                    ciclo=false;}
+                msg=new MessagioMaranzone(hostname, destinatario, messaggio,sessione);
+                invioSingolo(msg);
+
+            }
+
+
+        }//sessione pubblica
+    else if (sessione.equalsIgnoreCase("pubblico")) {
+        ciclo = true;
+        out.println("se vuoi uscire scrivi:esci da chat");
+        out.println("inserire cosa vuore dire hai fra");
+
+    while(ciclo){
+            String messagio=in.readLine(); 
+            if(messagio.equalsIgnoreCase("esci da chat")){ciclo=false;}
+            msg=new MessagioMaranzone(hostname, messagio, sessione);
+            sendToAll(msg);
+        
+        }    
+    
+    }//uscita dalla sessione
+    else if (sessione.equalsIgnoreCase("uscire")) {
+        
+        out.println("Addio ti ho voluto pene mon amour");
+        sendToAll("@");
+        ciclo = false;
+    }//messagio non valido
+    else{out.println("Non è valido questo comando");}
+}
+
+
+
+
+
+
+
+
+//
+/inserire se vuole fare publica o privata 
+                    out.println("scrivi messaggio perfavore");
+                    String messaggio = in.readLine();
+                    msg = new MessagioMaranzone(hostname, null, messaggio, sessione);
+
+                    sendToAll(msg);
+
+                    ObjectMapper objectMapper = new ObjectMapper();
+                    objectMapper.writeValue(new File("target/car.json"), car);
+                    
+
+            }
